@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test API's</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 20px;
+      background-color: #181818;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      width: 95vw;
+      overflow: auto;
+    }
+
+    h2 {
+      margin-top: 20px;
+      font-size: 26px;
+      color: #ff7f50;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.7px;
+    }
+
+    form {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+      background-color: #282828;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    input, textarea, select {
+      width: calc(100% - 24px);
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff7f50;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button:hover {
+      background-color: #ff6347;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    button:active {
+      background-color: #ff4500;
+      transform: translateY(0);
+    }
+
+    #response {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      padding: 15px;
+      background-color: #282828;
+      border-radius: 8px;
+      font-size: 14px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <h2>API Route Checker</h2>
+  <form id="apiForm">
+    <select id="apiSelector">
+      <option value="https://www.crunchyroll.com/content/v2/${account_id}/watch-history">GET /content/v2/{account_id}/watch-history</option>
+      <option value="https://www.crunchyroll.com/content/v2/discover/${account_id}/watchlist">GET /content/v2/discover/{account_id}/watchlist</option>
+    </select>
+    <input type="text" id="userToken" placeholder="Enter Bearer Token" required>
+    <textarea id="apiResponse" placeholder="API Response will appear here..." rows="10" readonly></textarea>
+    <button type="submit">Check API</button>
+  </form>
+  <script src="check-api.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const tokenDiv = document.getElementById("token");
     const redirectButton = document.getElementById("redirectToHistory");
     const getTokenButton = document.getElementById("getToken");
+    const testTokenButton = document.getElementById("testToken")
 
     statusDiv.textContent = "Checking if you are on the correct page...";
     tokenDiv.style.display = "none";
@@ -20,9 +21,21 @@ document.addEventListener("DOMContentLoaded", function () {
             redirectButton.style.display = "block";
         } else {
             statusDiv.textContent = "Please navigate to a Crunchyroll page first.";
+        
             redirectButton.style.display = "none";
             getTokenButton.style.display = "none";
+        
+            const navigateLink = document.createElement("a");
+            navigateLink.textContent = "Go to Crunchyroll";
+            navigateLink.href = "https://www.crunchyroll.com"; 
+            navigateLink.target= "_blank";
+            navigateLink.style.display = "block"; 
+            navigateLink.style.marginTop = "10px"; 
+            navigateLink.style.color = "#ff7f50"; 
+        
+            statusDiv.appendChild(navigateLink);
         }
+        
     });
 
     redirectButton.addEventListener("click", function () {
@@ -43,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
         chrome.storage.local.get("token", (data) => {
             if (data.token) {
                 tokenDiv.style.display = "block";
+                testTokenButton.style.display = "block"
+                getTokenButton.style.display = "none";
                 const tokenWithoutBearer = data.token.replace("Bearer ", "");
                 tokenDiv.innerText = `${tokenWithoutBearer}`;
                 const range = document.createRange();
