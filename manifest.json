@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Crunchyroll Token Extractor",
+    "version": "1.0",
+    "permissions": ["activeTab", "scripting", "storage", "webRequest"],
+    "host_permissions": ["https://www.crunchyroll.com/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.crunchyroll.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
